@@ -1,45 +1,45 @@
-# Project Title: Global Music Trends: Analyzing Spotify's Top 50 Playlist
+# Spotify Data Extraction and Transformation
 
 ## Introduction
-This project delves into the evolving landscape of global music preferences by analyzing Spotify's Top 50 - Global playlist. The goal is to identify what characteristics make a track successful on a worldwide scale and to uncover patterns in music that resonate across diverse cultures.
+This project was conceived to address the challenges faced by digital marketers and business analysts in understanding consumer music preferences and trends on Spotify. By automating the extraction and transformation of Spotify playlist data, we facilitate the creation of a robust dataset that can be used for market analysis, customer insight, and strategic decision-making.
 
-## Problem Statement
-The music industry is highly dynamic, with global hits emerging from various regions and genres. Understanding the attributes that contribute to a song's success can provide artists, producers, and labels with actionable insights to craft future hits. This project focuses on deciphering the commonalities among the tracks that make it to Spotify's Top 50 - Global playlist.
+## Business Problem
+In the competitive music streaming industry, it's crucial for businesses to stay ahead by curating content that resonates with their target audience. However, analyzing vast amounts of raw data to discern trends and preferences can be overwhelming. There was a need for a solution that could systematically gather, process, and present Spotify data in a manner that is accessible and actionable for business strategists and marketers.
 
-## Data Collection
-Data was meticulously extracted from Spotify's API, focusing on the Top 50 - Global playlist. The dataset includes:
+### Key Business Questions
+- What genres or artists are currently trending among different user demographics?
+- Which tracks are most frequently added to user-generated playlists, and what does that imply about listener preferences?
+- How do audio features correlate with song popularity and listener engagement?
 
-- **Album Data**: Information about the album of each track, such as IDs, names, release dates, and more.
-- **Artist Information**: Artist genres, popularity scores, followers, and images.
-- **Song Details**: Track-specific data, including IDs, names, popularity, explicitness, and other relevant metrics.
-- **Audio Features**: Technical attributes of each track, such as danceability, tempo, and mood indicators.
+## Solution
+To address these questions, we built a serverless data pipeline on AWS with two key Lambda functions:
 
-Python scripts were written to query the Spotify API and process the data into a structured form for subsequent analysis.
+### Extract Function
+The extract function serves as the initial entry point, pulling raw playlist data from Spotify. This data contains rich insights into user behavior, such as song selections and playlist creation patterns.
 
-## Data Processing
-The gathered data were consolidated into a singular CSV file, creating an extensive dataset that captures the essence of the current global music trends. This merged data allows for a comprehensive analysis of the various aspects affecting a track's performance.
+### Transform and Load Function
+The transformation stage is where raw data is processed into a structured and queryable format. The load process then stores this data in a way that's optimized for analysis, which can be directly utilized to answer our key business questions.
 
-## Analysis
-Key areas of analysis will include:
+## Deployment Workflow
+Utilizing AWS SAM, we streamlined the deployment of our Lambda functions with the following commands:
 
-- **Temporal Popularity Trends**: Examining how the popularity of tracks fluctuates over time.
-- **Success Attributes**: Identifying song features that are commonly seen in top-charting tracks.
-- **Cross-Cultural Appeal**: Understanding the elements that give a song universal appeal across different regions.
-- **Genre Popularity**: Analyzing the representation and performance of various genres in the global top charts.
-- **Predictive Insights**: Using machine learning to predict potential future hits based on their attributes.
+- `sam build` — Prepares the deployment package.
+- `sam deploy` — Deploys the application to AWS, making it readily available for execution.
 
-## Tools and Technologies Used
-- Python for scripting and data processing.
-- Spotify API for data acquisition.
-- Data analysis libraries: Pandas, NumPy.
-- Visualization libraries: Matplotlib, Seaborn.
-- Machine learning libraries: Sci-kit Learn for building predictive models.
+## Hypothetical Use Case
+Imagine a scenario where a music production company wants to identify emerging artists to invest in. Using the transformed data from our project, they can:
 
-## Repository Structure
-1. **Scripts**: Contains Python scripts for data collection (`data_collection/`).
-2. **Data**: Merged dataset in CSV format located in the `data/` directory.
-3. **Analysis**: Jupyter notebooks with exploratory data analysis in the `analysis/` directory.
-4. **Models**: Machine learning models are stored in the `models/` directory.
+- Analyze the popularity and engagement metrics of artists' tracks.
+- Determine the correlation between audio features and listener preferences.
+- Identify potential breakout artists based on genre trends and follower growth.
+
+The insights gained from our pipeline empower the company to make data-driven decisions on artist contracts and promotional strategies.
+
+## Challenges Encountered and Resolutions
+We overcame several technical hurdles, such as dependency management and AWS deployment issues, by adopting AWS SAM and adhering to AWS's naming and configuration conventions.
+
+## Future Work
+We plan to complete the transformation logic, integrate additional data points such as user demographics, and establish a continuous deployment pipeline to facilitate real-time data analysis.
 
 ## Conclusion
-The insights from this analysis will shed light on the factors that drive a song to international success, allowing stakeholders in the music industry to make data-driven decisions.
+This project delivers a scalable solution for businesses to leverage Spotify data in their strategic planning. The insights derived from our data pipeline offer a competitive edge in content curation, marketing, and trend analysis within the music streaming landscape.
